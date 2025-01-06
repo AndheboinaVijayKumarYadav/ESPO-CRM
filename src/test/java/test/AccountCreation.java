@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 import java.util.List;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.time.Duration;
 
@@ -22,9 +23,9 @@ public class AccountCreation extends BaseTest {
         WebElement loginButton = driver.findElement(By.id("btn-login"));
         loginButton.click();
 
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-
         WebElement accountElement = driver.findElement(By.xpath("//span[text()='Accounts']"));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[text()='Accounts']")));
+
         accountElement.click();
 
 
@@ -32,7 +33,7 @@ public class AccountCreation extends BaseTest {
         createAccountButton.click();
 
         List<WebElement> inputElementOfForm = driver.findElements(By.xpath("//input[contains(@class, 'main-element')]"));
-        inputElementOfForm.get(0).sendKeys("Vijay");
+        inputElementOfForm.get(0).sendKeys("Vijay2");
 
         inputElementOfForm.get(1).sendKeys("vijay.com");
 
